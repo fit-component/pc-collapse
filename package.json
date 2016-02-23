@@ -1,6 +1,6 @@
 {
   "name": "fit-collapse",
-  "version": "0.2.35",
+  "version": "0.2.40",
   "description": "collapse panel",
   "main": "lib/index.js",
   "scripts": {
@@ -14,5 +14,10 @@
     "tieba"
   ],
   "author": "tieba",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.7",
+    "classnames": "^2.2.3",
+    "react-dom": "^0.14.7"
+  }
 }
