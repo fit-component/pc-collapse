@@ -47,25 +47,34 @@ export default class CollPanel extends React.Component {
     }
 
     render() {
-        let panelCollapseClass = classNames({
+        const {className, active, header, children, ...others} = this.props
+
+        const classes = classNames({
+            '_namespace': true,
+            'panel': true,
+            'panel-default': true,
+            [className]: className
+        })
+
+        const panelCollapseClass = classNames({
             'panel-collapse': true,
             'collapse': true,
             'in': true,
-            'show': this.props.active
+            'show': active
         })
 
-        let rightChevronClass = classNames({
+        const rightChevronClass = classNames({
             'fa': true,
             'fa-chevron-right': true,
             'rotate-pre': true,
-            'rotate': this.props.active
+            'rotate': active
         })
 
         // 设置height属性
         let height = null
-        height = this.props.active ? this.state.contentHeight : null
+        height = active ? this.state.contentHeight : null
         if (this.state.finish) {
-            if (this.props.active) {
+            if (active) {
                 height = 'auto'
             } else {
                 height = 0
@@ -78,17 +87,16 @@ export default class CollPanel extends React.Component {
         this.height = height
 
         return (
-            <div className="_namespace panel panel-default">
+            <div {...others} className={classes}>
                 <div className="panel-heading"
                      onClick={this.handleClick.bind(this)}>
                     <i className={rightChevronClass}
-                       style={{marginRight:5}}/>{this.props.header}
+                       style={{marginRight:5}}/>{header}
                 </div>
                 <div className={panelCollapseClass}
                      style={contentContainerStyle}>
-                    <div style={this.props.style}
-                         id="content">
-                        {this.props.children}
+                    <div id="content">
+                        {children}
                     </div>
                 </div>
             </div>
@@ -97,6 +105,9 @@ export default class CollPanel extends React.Component {
 }
 
 CollPanel.defaultProps = {
+    // @desc 是否激活
     active: false,
+
+    // @desc 对应key
     key: null
 }

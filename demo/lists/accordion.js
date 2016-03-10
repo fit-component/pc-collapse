@@ -8,18 +8,15 @@ export default class Demo extends React.Component {
         return (
             <Collapse defaultActiveKey={'2'}
                       accordion>
-                <CollPanel style={{padding:10}}
-                           header="panel header 1"
+                <CollPanel header="panel header 1"
                            key="1">
                     {text}
                 </CollPanel>
-                <CollPanel style={{padding:10}}
-                           header="panel header 2"
+                <CollPanel header="panel header 2"
                            key="2">
                     {text}
                 </CollPanel>
-                <CollPanel style={{padding:10}}
-                           header="panel header 3"
+                <CollPanel header="panel header 3"
                            key="3">
                     {text}
                 </CollPanel>

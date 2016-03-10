@@ -1,5 +1,6 @@
 import React from 'react'
 import CollPanel from '../coll-panel'
+import classNames from 'classnames'
 import _ from 'lodash'
 
 const arrayOrStrEqual = (item, arr)=> {
@@ -59,7 +60,13 @@ export default class Collapse extends React.Component {
     }
 
     render() {
-        let Children = React.Children.map(this.props.children, (item)=> {
+        const {className, children, accordion, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
+        let Children = React.Children.map(children, (item)=> {
             return React.cloneElement(item, {
                 active: arrayOrStrEqual(item.key, this.state.activeKey),
                 onChange: this.handleChange.bind(this),
@@ -69,7 +76,7 @@ export default class Collapse extends React.Component {
         })
 
         return (
-            <div style={this.props.style}>
+            <div {...others} className={classes}>
                 {Children}
             </div>
         )
@@ -77,7 +84,10 @@ export default class Collapse extends React.Component {
 }
 
 Collapse.defaultProps = {
+    // 是否是手风琴模式
     accordion: false,
+
+    // @desc 值修改的回调
     onChange: (key)=> {
     }
 }
