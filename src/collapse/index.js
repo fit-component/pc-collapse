@@ -2,6 +2,7 @@ import React from 'react'
 import CollPanel from '../coll-panel'
 import classNames from 'classnames'
 import _ from 'lodash'
+import './index.scss'
 
 const arrayOrStrEqual = (item, arr)=> {
     if (_.isArray(arr)) {
@@ -63,15 +64,15 @@ export default class Collapse extends React.Component {
         const {className, children, accordion, ...others} = this.props
         const classes = classNames({
             '_namespace': true,
-            [className]: className
+            [className] : className
         })
 
         let Children = React.Children.map(children, (item)=> {
             return React.cloneElement(item, {
-                active: arrayOrStrEqual(item.key, this.state.activeKey),
+                active  : arrayOrStrEqual(item.key, this.state.activeKey),
                 onChange: this.handleChange.bind(this),
-                key: item.key,
-                _key: item.key
+                key     : item.key,
+                _key    : item.key
             })
         })
 
