@@ -1,5 +1,5 @@
-import React from 'react'
-import {Collapse, CollPanel} from 'fit-collapse'
+import * as React from 'react'
+import {Collapse, CollPanel} from '../../src'
 
 const text = (
     <div style={{padding:10}}>
@@ -7,10 +7,10 @@ const text = (
     </div>
 )
 
-export default class Demo extends React.Component {
+export default class Demo extends React.Component <any, any> {
     render() {
         return (
-            <Collapse defaultActiveKey={'2'}
+            <Collapse defaultValue={'2'}
                       accordion>
                 <CollPanel header="panel header 1"
                            key="1">

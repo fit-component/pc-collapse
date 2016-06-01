@@ -1,5 +1,5 @@
-import React from 'react'
-import { Collapse, CollPanel } from 'fit-collapse'
+import * as  React from 'react'
+import {Collapse, CollPanel} from '../../src'
 
 const text = (
     <div style={{padding:10}}>
@@ -7,14 +7,14 @@ const text = (
     </div>
 )
 
-export default class Demo extends React.Component {
-    callback(key) {
+export default class Demo extends React.Component <any, any> {
+    callback(key:string) {
         console.log(key)
     }
 
     render() {
         return (
-            <Collapse defaultActiveKey={['1','2']}
+            <Collapse defaultValue={['1','2']}
                       onChange={this.callback.bind(this)}>
                 <CollPanel header="panel header 1"
                            key="1">

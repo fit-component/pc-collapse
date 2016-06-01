@@ -1,17 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import classNames from 'classnames'
-import $ from 'jquery'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import * as classNames from 'classnames'
+import * as $ from 'jquery'
+import * as module from './module'
+import {others} from '../../../../common/transmit-transparently/src'
 import './index.scss'
 
-export default class CollPanel extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            contentHeight: 0,
-            finish: true
-        }
+export default class CollPanel extends React.Component <module.PropsInterface, module.StateInterface> {
+    static defaultProps: module.PropsInterface = new module.Props()
+    public state: module.StateInterface = new module.State()
+    private toggleTimeout: any
+    private $dom: JQuery
+    private height: number
 
+    constructor(props: any) {
+        super(props)
         this.toggleTimeout = null
     }
 
@@ -32,7 +35,7 @@ export default class CollPanel extends React.Component {
         this.setState({
             finish: false
         }, ()=> {
-            this.props.onChange(this.props._key)
+            this.props.onChange(this.props.activeKey)
         })
 
         if (this.toggleTimeout) {
@@ -47,7 +50,8 @@ export default class CollPanel extends React.Component {
     }
 
     render() {
-        const {className, active, header, children, ...others} = this.props
+        const {className, active, header, children} = this.props
+        const _others = others(new module.Props(), this.props)
 
         const classes = classNames({
             '_namespace': true,
@@ -71,7 +75,7 @@ export default class CollPanel extends React.Component {
         })
 
         // 设置height属性
-        let height = null
+        let height:any = null
         height = active ? this.state.contentHeight : null
         if (this.state.finish) {
             if (active) {
@@ -87,7 +91,7 @@ export default class CollPanel extends React.Component {
         this.height = height
 
         return (
-            <div {...others} className={classes}>
+            <div {..._others} className={classes}>
                 <div className="panel-heading"
                      onClick={this.handleClick.bind(this)}>
                     <i className={rightChevronClass}
@@ -102,12 +106,4 @@ export default class CollPanel extends React.Component {
             </div>
         )
     }
-}
-
-CollPanel.defaultProps = {
-    // @desc 是否激活
-    active: false,
-
-    // @desc 对应key
-    key: null
 }
