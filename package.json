@@ -1,6 +1,6 @@
 {
   "name": "fit-collapse",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "collapse panel",
   "main": "lib/index.js",
   "scripts": {
@@ -15,6 +15,13 @@
   ],
   "author": "tieba",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "classnames": "^2.2.3",
+    "jquery": "^2.1.4",
+    "fit-transmit-transparently": "^3.1.18",
+    "lodash": "^3.10.1"
+  },
   "typings": "lib/index.d.ts"
 }
