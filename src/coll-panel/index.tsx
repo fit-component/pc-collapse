@@ -95,7 +95,7 @@ export default class CollPanel extends React.Component <module.PropsInterface, m
                 <div className="panel-heading"
                      onClick={this.handleClick.bind(this)}>
                     <i className={rightChevronClass}
-                       style={{marginRight: '5px'}}/>{header}
+                       style={{marginRight: 5}}/>{header}
                 </div>
                 <div className={panelCollapseClass}
                      style={contentContainerStyle}>
