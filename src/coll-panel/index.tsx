@@ -21,13 +21,13 @@ export default class CollPanel extends React.Component <module.PropsInterface, m
     componentDidMount() {
         this.$dom = $(ReactDOM.findDOMNode(this))
         this.setState({
-            contentHeight: this.$dom.find('#content').outerHeight()
+            contentHeight: this.$dom.find('[data-fit-coll-content]').outerHeight()
         })
     }
 
     componentWillReceiveProps() {
         this.setState({
-            contentHeight: this.$dom.find('#content').outerHeight()
+            contentHeight: this.$dom.find('[data-fit-coll-content]').outerHeight()
         })
     }
 
@@ -95,11 +95,11 @@ export default class CollPanel extends React.Component <module.PropsInterface, m
                 <div className="panel-heading"
                      onClick={this.handleClick.bind(this)}>
                     <i className={rightChevronClass}
-                       style={{marginRight:5}}/>{header}
+                       style={{marginRight: 5}}/>{header}
                 </div>
                 <div className={panelCollapseClass}
                      style={contentContainerStyle}>
-                    <div id="content">
+                    <div data-fit-coll-content>
                         {children}
                     </div>
                 </div>
